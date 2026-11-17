@@ -1,0 +1,202 @@
+﻿
+@use '../../styles/variables' as *;
+
+.content {
+  width: 100%;
+}
+
+/* Desktop Layout */
+.desktopContent {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.mobileContent {
+  display: none;
+}
+
+/* Cards */
+.bio,
+.approach,
+.tools {
+  background: $color-white;
+  border: 1px solid $color-border;
+  border-radius: $radius-card;
+  padding: clamp(22px, 3vw, 36px);
+}
+
+/* Story */
+.bio {
+  h2 {
+    font-family: $font-display;
+    font-size: clamp(24px, 3vw, 34px);
+    font-weight: 500;
+    color: $color-navy;
+    margin: 14px 0 22px;
+  }
+
+  p {
+    color: $color-muted;
+    font-size: 14px;
+    line-height: 1.9;
+    margin: 0 0 16px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+/* Section Labels */
+.sectionLabel {
+  display: inline-block;
+  color: $color-gold;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+/* Side Content */
+.sideContent {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Approach & Toolkit Headings */
+.approach,
+.tools {
+  h2 {
+    font-family: $font-display;
+    font-size: 24px;
+    font-weight: 500;
+    color: $color-navy;
+    margin: 12px 0 20px;
+  }
+}
+
+/* Approach List */
+.approach {
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    color: $color-charcoal;
+    font-size: 13px;
+    line-height: 1.6;
+
+    svg {
+      flex-shrink: 0;
+      color: $color-gold;
+      margin-top: 2px;
+    }
+  }
+}
+
+/* Toolkit */
+.toolGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tool {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: $color-cream;
+  border: 1px solid $color-border;
+  border-radius: 9px;
+  color: $color-charcoal;
+  font-size: 12px;
+
+  svg {
+    color: $color-gold;
+    flex-shrink: 0;
+  }
+}
+
+/* Mobile Tabs */
+.tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
+  padding: 4px;
+  background: $color-cream;
+  border: 1px solid $color-border;
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+
+.tab {
+  border: none;
+  background: transparent;
+  color: $color-muted;
+  padding: 12px 4px;
+  border-radius: 8px;
+  font-family: $font-body;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.activeTab {
+  background: $color-navy;
+  color: $color-white;
+}
+
+.tabPanel {
+  min-width: 0;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .desktopContent {
+    grid-template-columns: 1fr;
+  }
+
+  .sideContent {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .desktopContent {
+    display: none;
+  }
+
+  .mobileContent {
+    display: block;
+  }
+
+  .sideContent {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .bio,
+  .approach,
+  .tools {
+    padding: 22px;
+  }
+
+  .bio p {
+    font-size: 13px;
+  }
+}

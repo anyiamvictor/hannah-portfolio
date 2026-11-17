@@ -1,0 +1,447 @@
+@use '../../styles/variables' as *;
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 28px;
+  min-height: calc(100vh - 84px);
+  padding: 32px 0 48px;
+}
+
+/* Intro */
+.intro {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.75fr) minmax(0, 1.25fr);
+  align-items: center;
+  gap: clamp(28px, 5vw, 72px);
+}
+
+.portraitColumn {
+  width: 100%;
+  max-width: 340px;
+  margin-inline: auto;
+}
+
+.portraitFrame {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 50%;
+  background: #e8dfd2;
+  box-shadow: 0 24px 60px rgba($color-navy, 0.12);
+}
+
+.portrait {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+}
+
+.introContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: $color-gold;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  line-height: 1.6;
+}
+
+.eyebrowLine {
+  width: 28px;
+  height: 1px;
+  background: $color-gold;
+  flex-shrink: 0;
+}
+
+.headline {
+  margin: 0;
+  color: $color-navy;
+  font-family: $font-display;
+  font-size: clamp(38px, 5vw, 72px);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -1.8px;
+}
+
+.headline span {
+  color: $color-gold;
+}
+
+/* Description */
+.description {
+  max-width: 760px;
+  margin: 0;
+  color: $color-muted;
+  font-size: 16px;
+  line-height: 1.85;
+}
+
+.mobileDescription {
+  display: none;
+}
+
+/* CTA */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+}
+
+.primaryButton,
+.secondaryButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 0 22px;
+  border-radius: $radius-button;
+  font-size: 14px;
+  font-weight: 600;
+  transition:
+    transform $transition-fast,
+    background $transition-fast;
+}
+
+.primaryButton {
+  background: $color-navy;
+  color: $color-white;
+}
+
+.primaryButton:hover {
+  transform: translateY(-2px);
+}
+
+.secondaryButton {
+  color: $color-navy;
+  border: 1px solid $color-border;
+}
+
+.secondaryButton:hover {
+  background: $color-white;
+  transform: translateY(-2px);
+}
+
+/* Availability */
+.availability {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: $color-muted;
+  font-size: 12px;
+}
+
+.availabilityDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #6c9c78;
+  flex-shrink: 0;
+}
+.valueStrip {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  padding-top: 12px;
+}
+
+.valueStrip span {
+  padding: 8px 16px;
+  border: 1px solid $color-border;
+  border-radius: 100px;
+  color: $color-navy;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+  transition:
+    background $transition-fast,
+    border-color $transition-fast;
+}
+
+.valueStrip span:hover {
+  background: $color-white;
+  border-color: $color-gold;
+}
+
+
+/* Tablet */
+@media (max-width: 900px) {
+  .hero {
+    gap: 24px;
+    padding: 36px 0;
+  }
+
+  .intro {
+    grid-template-columns: minmax(180px, 0.75fr) minmax(0, 1.25fr);
+    gap: 28px;
+  }
+
+  .portraitColumn {
+    max-width: 280px;
+  }
+
+  .introContent {
+    gap: 18px;
+  }
+
+  .headline {
+    font-size: clamp(32px, 5vw, 48px);
+    letter-spacing: -1px;
+  }
+
+  .description {
+    font-size: 14px;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    min-height: 46px;
+    padding: 0 16px;
+    font-size: 13px;
+  }
+}
+
+/* Mobile */
+
+/* Mobile */
+@media (max-width: 720px) {
+.hero {
+  box-sizing: border-box;
+  min-height: calc(100svh - 100px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 24px 0;
+}
+
+.heroFooter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+  .intro {
+    grid-template-columns: minmax(105px, 0.8fr) minmax(0, 1.2fr);
+    gap: 16px;
+  }
+
+  .portraitColumn {
+    max-width: 220px;
+  }
+
+  .introContent {
+    gap: 8px;
+  }
+
+  .eyebrow {
+    gap: 6px;
+    font-size: 8px;
+    letter-spacing: 0.8px;
+  }
+
+  .eyebrowLine {
+    width: 12px;
+  }
+
+  .headline {
+    font-size: clamp(24px, 6.5vw, 38px);
+    letter-spacing: -0.7px;
+    line-height: 1.15;
+  }
+
+  .description {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .desktopDescription {
+    display: none;
+  }
+
+  .mobileDescription {
+    display: inline;
+  }
+
+  .actions {
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    min-height: 44px;
+    padding: 0 14px;
+    font-size: 12px;
+  }
+
+  .availability {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    margin: 0;
+    font-size: 11px;
+  }
+
+  .availabilityDot {
+    width: 6px;
+    height: 6px;
+  }
+
+  .valueStrip {
+    justify-content: center;
+    gap: 7px;
+    padding-top: 0;
+  }
+
+  .valueStrip span {
+    padding: 6px 11px;
+    font-size: 10px;
+  }
+}
+
+.valueProposition {
+  color: $color-navy;
+  font-family: $font-display;
+  font-size: clamp(17px, 2vw, 22px);
+  font-weight: 500;
+  line-height: 1.4;
+  text-align: center;
+  margin: 0;
+}
+
+/* Small phones */
+@media (max-width: 360px) {
+  .hero {
+    gap: 14px;
+  }
+
+  .intro {
+    grid-template-columns: minmax(95px, 0.75fr) minmax(0, 1.25fr);
+    gap: 12px;
+  }
+
+  .headline {
+    font-size: 24px;
+  }
+
+  .eyebrow {
+    font-size: 7px;
+    letter-spacing: 0.5px;
+  }
+
+  .description {
+    font-size: 12px;
+  }
+
+  .actions {
+    gap: 8px;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    min-height: 40px;
+    padding: 0 10px;
+    font-size: 11px;
+  }
+
+  .availabilityDot {
+    width: 5px;
+    height: 5px;
+  }
+}
+
+/* Shared hero variant for inner portfolio sections */
+.sectionHero {
+  min-height: auto;
+  padding: 0;
+  gap: 20px;
+
+  .intro {
+    grid-template-columns: minmax(150px, 0.55fr) minmax(0, 1.45fr);
+    gap: clamp(24px, 5vw, 64px);
+  }
+
+  .portraitColumn {
+    max-width: 260px;
+  }
+
+  .introContent {
+    gap: 18px;
+  }
+
+  .headline {
+    max-width: 700px;
+  }
+
+  .description {
+    max-width: 720px;
+  }
+}
+
+@media (max-width: 720px) {
+  .sectionHero {
+    gap: 16px;
+
+    .intro {
+      grid-template-columns: minmax(100px, 0.8fr) minmax(0, 1.2fr);
+      gap: 16px;
+    }
+
+    .portraitColumn {
+      max-width: 200px;
+    }
+
+    .introContent {
+      gap: 12px;
+    }
+
+    .headline {
+      font-size: clamp(23px, 6vw, 34px);
+    }
+
+    .description {
+      font-size: 13px;
+      line-height: 1.7;
+    }
+  }
+}
+
+@media (max-width: 360px) {
+  .sectionHero {
+    .intro {
+      grid-template-columns: minmax(90px, 0.75fr) minmax(0, 1.25fr);
+      gap: 12px;
+    }
+
+    .headline {
+      font-size: 23px;
+    }
+  }
+}
+
+@media (max-width: 360px) {
+  .valueStrip {
+    gap: 5px;
+  }
+
+  .valueStrip span {
+    padding: 5px 9px;
+    font-size: 9px;
+  }
+}

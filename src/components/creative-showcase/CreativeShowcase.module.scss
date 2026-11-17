@@ -1,0 +1,489 @@
+﻿
+@use "../../styles/variables" as *;
+
+.showcase {
+  width: 100%;
+}
+
+// Heading
+.heading {
+  margin-bottom: 2rem;
+
+  .eyebrow {
+    display: inline-block;
+    color: $color-gold;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    margin-bottom: 0.75rem;
+  }
+
+  h2 {
+    font-family: $font-display;
+    font-size: clamp(1.7rem, 4vw, 2.5rem);
+    font-weight: 500;
+    color: $color-navy;
+    margin: 0 0 0.75rem;
+  }
+
+  p {
+    max-width: 620px;
+    color: $color-muted;
+    line-height: 1.7;
+    font-size: 0.95rem;
+    margin: 0;
+  }
+}
+
+// Category selector
+.categoryTabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid $color-border;
+}
+
+.categoryTab {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.85rem 1rem;
+  border: 0;
+  background: transparent;
+  color: $color-muted;
+  font-family: $font-body;
+  font-size: 0.88rem;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color $transition-fast;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 2px;
+    background: $color-gold;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform $transition-fast;
+  }
+
+  &:hover {
+    color: $color-navy;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-gold;
+    outline-offset: -2px;
+  }
+}
+
+.activeTab {
+  color: $color-navy;
+
+  &::after {
+    transform: scaleX(1);
+  }
+}
+
+// Gallery
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.galleryItem {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+
+.thumbnail {
+  position: relative;
+  overflow: hidden;
+  border-radius: $radius-card;
+  background: #eee9e1;
+  aspect-ratio: 4 / 5;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 400ms ease;
+  }
+
+  &:hover img {
+    transform: scale(1.035);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-gold;
+    outline-offset: 3px;
+  }
+}
+
+.videoGallery .thumbnail {
+  aspect-ratio: 16 / 10;
+
+  img {
+    object-fit: cover;
+  }
+}
+
+// Client / Concept badges
+.projectBadge {
+  position: absolute;
+  bottom: 0.65rem;
+  right: 0.65rem;
+  z-index: 1;
+  padding: 0.35rem 0.5rem;
+  border-radius: 999px;
+  font-family: $font-body;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  backdrop-filter: blur(8px);
+}
+.clientBadge {
+  background: rgba(23, 38, 60, 0.85);
+  color: $color-white;
+}
+
+.conceptBadge {
+  background: rgba(197, 165, 114, 0.95);
+  color: $color-navy;
+}
+
+// Video play button
+.playButton {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: $color-white;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: rgba(23, 38, 60, 0.78);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(6px);
+  }
+
+  svg {
+    position: relative;
+    margin-left: 3px;
+  }
+}
+
+// Hover hint
+.zoomHint {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 0.75rem;
+  padding: 0.4rem 0.65rem;
+  border-radius: 999px;
+  background: rgba(23, 38, 60, 0.78);
+  color: $color-white;
+  font-size: 0.7rem;
+  opacity: 0;
+  transform: translateY(5px);
+  transition: opacity $transition-fast, transform $transition-fast;
+}
+
+.galleryItem:hover .zoomHint {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+// Full-screen overlay
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 5rem;
+  background: rgba(12, 18, 29, 0.96);
+  backdrop-filter: blur(12px);
+  animation: overlayEnter 200ms ease-out;
+}
+
+// Close button
+.closeButton {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  color: $color-white;
+  cursor: pointer;
+  transition: background $transition-fast;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.18);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-gold;
+    outline-offset: 3px;
+  }
+}
+
+// Image lightbox
+.imagePreview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  gap: 0.75rem;
+
+  img {
+    display: block;
+    max-width: 100%;
+    max-height: calc(100% - 2.5rem);
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 20px 70px rgba(0, 0, 0, 0.3);
+  }
+}
+
+// Preview caption
+.previewCaption {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+// Concept disclaimer
+.disclaimer {
+  max-width: 600px;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.7rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+// Lightbox navigation
+.navButton {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  color: $color-white;
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: background $transition-fast;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.18);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-gold;
+    outline-offset: 3px;
+  }
+}
+
+.previousButton {
+  left: 1.25rem;
+}
+
+.nextButton {
+  right: 1.25rem;
+}
+
+// Video player overlay
+.videoPreview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: min(100%, 1000px);
+
+  video {
+    display: block;
+    width: 100%;
+    max-height: calc(100dvh - 8rem);
+    background: #000;
+    border-radius: 10px;
+    object-fit: contain;
+  }
+}
+
+// Overlay animation
+@keyframes overlayEnter {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+// Mobile
+@media (max-width: 640px) {
+  .heading {
+    margin-bottom: 1rem;
+
+    .eyebrow {
+      font-size: 0.62rem;
+      margin-bottom: 0.35rem;
+    }
+
+    h2 {
+      font-size: 1.45rem;
+      margin-bottom: 0.4rem;
+    }
+
+    p {
+      font-size: 0.76rem;
+      line-height: 1.45;
+    }
+  }
+
+  // Hide creative eyebrow on mobile
+  .creative {
+    display: none;
+  }
+
+  .categoryTabs {
+    gap: 0;
+    margin-bottom: 0.8rem;
+  }
+
+  .categoryTab {
+    flex: 1;
+    gap: 0.35rem;
+    padding: 0.7rem 0.25rem;
+    font-size: 0.72rem;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.55rem;
+  }
+
+  .thumbnail {
+    border-radius: 10px;
+    aspect-ratio: 4 / 5;
+  }
+
+  .videoGallery .thumbnail {
+    aspect-ratio: 4 / 5;
+  }
+
+.projectBadge {
+  top: auto;
+  left: auto;
+  bottom: 0.4rem;
+  right: 0.4rem;
+
+  padding: 0.25rem 0.4rem;
+  font-size: 0.48rem;
+  letter-spacing: 0.02em;
+
+  display: inline-flex;
+  width: fit-content;
+  white-space: nowrap;
+}
+
+  .zoomHint {
+    display: none;
+  }
+
+  // Mobile lightbox
+  .overlay {
+    padding: 3.5rem 0.5rem 1.5rem;
+  }
+
+  .closeButton {
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 42px;
+    height: 42px;
+  }
+
+  .imagePreview {
+    img {
+      max-width: 100%;
+      max-height: calc(100% - 2rem);
+    }
+  }
+
+  .previewCaption {
+    font-size: 0.68rem;
+  }
+
+  .disclaimer {
+    max-width: 90%;
+    font-size: 0.62rem;
+    line-height: 1.4;
+  }
+
+  .navButton {
+    width: 36px;
+    height: 36px;
+    background: rgba(23, 38, 60, 0.7);
+  }
+
+  .previousButton {
+    left: 0.35rem;
+  }
+
+  .nextButton {
+    right: 0.35rem;
+  }
+
+  .videoPreview {
+    width: 100%;
+
+    video {
+      max-height: calc(100dvh - 8rem);
+      border-radius: 6px;
+    }
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  .showcase *,
+  .showcase *::before,
+  .showcase *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

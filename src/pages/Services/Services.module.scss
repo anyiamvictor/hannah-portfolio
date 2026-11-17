@@ -1,0 +1,444 @@
+﻿
+@use '../../styles/variables' as *;
+
+.services {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  padding: 36px 0 48px;
+}
+
+.heading {
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  h1 {
+    font-family: $font-display;
+    font-size: clamp(32px, 4vw, 52px);
+    line-height: 1.15;
+    letter-spacing: -1.2px;
+    color: $color-navy;
+    margin: 0;
+  }
+
+  p {
+    max-width: 600px;
+    color: $color-muted;
+    font-size: 15px;
+    line-height: 1.8;
+    margin: 0;
+  }
+}
+
+.eyebrow {
+  color: $color-gold;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+/* Service category selector */
+.serviceTabs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.serviceTab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 112px;
+  padding: 16px 12px;
+  border: 1px solid $color-border;
+  border-radius: $radius-card;
+  background: $color-white;
+  color: $color-muted;
+  font-family: $font-body;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.5;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    background $transition-fast,
+    color $transition-fast,
+    border-color $transition-fast,
+    transform $transition-fast;
+
+  &:hover {
+    border-color: $color-navy;
+    color: $color-navy;
+    transform: translateY(-2px);
+  }
+
+  svg {
+    flex-shrink: 0;
+  }
+}
+
+.activeServiceTab {
+  background: $color-navy;
+  border-color: $color-navy;
+  color: $color-white;
+
+  &:hover {
+    background: $color-navy;
+    border-color: $color-navy;
+    color: $color-white;
+  }
+}
+
+/* Selected service content */
+.serviceContent {
+  width: 100%;
+  min-width: 0;
+}
+
+.servicePanel {
+  background: $color-white;
+  border: 1px solid $color-border;
+  border-radius: $radius-card;
+  padding: 28px;
+}
+
+.serviceHeader {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 28px;
+
+  h2 {
+    font-family: $font-display;
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 500;
+    color: $color-navy;
+    margin: 0 0 8px;
+  }
+
+  p {
+    font-size: 13px;
+    line-height: 1.7;
+    color: $color-muted;
+    margin: 0;
+  }
+}
+
+/* Service icon */
+.iconBox {
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba($color-gold, 0.13);
+  color: $color-navy;
+  border-radius: 14px;
+  transition:
+    background $transition-fast,
+    color $transition-fast,
+    transform $transition-fast;
+}
+
+/* Tasks */
+.serviceTasks {
+  h3 {
+    color: $color-navy;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 18px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px 24px;
+  }
+
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    color: $color-charcoal;
+    font-size: 13px;
+    line-height: 1.6;
+
+    svg {
+      color: $color-gold;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+  }
+}
+
+/* Service CTA */
+.serviceLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 28px;
+  color: $color-navy;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $color-gold;
+  }
+}
+
+/* General CTA */
+.cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 24px 28px;
+  background: $color-navy;
+  border-radius: $radius-card;
+  color: $color-white;
+  margin-top: 28px;
+
+  p {
+    font-family: $font-display;
+    font-size: 20px;
+    margin: 0;
+  }
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+    color: $color-navy;
+    background: $color-cream;
+    text-decoration: none;
+    padding: 13px 18px;
+    border-radius: $radius-button;
+    font-size: 13px;
+    font-weight: 600;
+    transition: background $transition-fast;
+
+    &:hover {
+      background: $color-gold;
+    }
+  }
+}
+
+/* Tablet */
+@media (max-width: 800px) {
+  .serviceTabs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .serviceTab {
+    min-height: 96px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 720px) {
+  .services {
+    gap: 26px;
+    padding: 24px 0 32px;
+  }
+
+  .heading {
+    gap: 12px;
+
+    h1 {
+      font-size: 32px;
+      letter-spacing: -0.8px;
+    }
+
+    p {
+      font-size: 13px;
+    }
+  }
+
+  /* Four compact tabs in one row */
+  .serviceTabs {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 4px;
+    margin-bottom: 16px;
+    padding: 4px;
+    background: $color-cream;
+    border-radius: 12px;
+  }
+
+  .serviceTab {
+    min-width: 0;
+    min-height: 64px;
+    padding: 8px 2px;
+    gap: 5px;
+    border: none;
+    border-radius: 9px;
+    background: transparent;
+    font-size: 10px;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 1.2;
+
+    &:hover {
+      transform: none;
+      border-color: transparent;
+    }
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    span {
+      text-align: center;
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+  }
+
+  .activeServiceTab {
+    background: $color-navy;
+    color: $color-white;
+
+    &:hover {
+      background: $color-navy;
+      border-color: $color-navy;
+      color: $color-white;
+    }
+  }
+
+  .serviceContent {
+    margin-top: 0;
+  }
+
+  .servicePanel {
+    padding: 20px 16px;
+    border-radius: 14px;
+  }
+
+  .serviceHeader {
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .iconBox {
+    width: 46px;
+    height: 46px;
+    border-radius: 10px;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .serviceHeader h2 {
+    font-size: 21px;
+  }
+
+  .serviceHeader p {
+    font-size: 12px;
+  }
+
+  .serviceTasks {
+    h3 {
+      font-size: 13px;
+      margin-bottom: 14px;
+    }
+
+    ul {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    li {
+      font-size: 12px;
+    }
+  }
+
+  .serviceLink {
+    margin-top: 22px;
+  }
+
+  .cta {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 22px;
+    gap: 16px;
+
+    p {
+      font-size: 19px;
+      line-height: 1.4;
+    }
+  }
+}
+
+/* Extra-small phones */
+@media (max-width: 360px) {
+  .serviceTabs {
+    gap: 2px;
+    padding: 3px;
+  }
+
+  .serviceTab {
+    padding: 8px 1px;
+    font-size: 9px;
+    min-height: 58px;
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  .servicePanel {
+    padding: 16px 12px;
+  }
+
+  .serviceHeader h2 {
+    font-size: 18px;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .serviceTab,
+  .iconBox,
+  .serviceLink,
+  .cta a {
+    transition: none;
+  }
+}
+
+
+/* Responsive service labels */
+.mobileLabel {
+  display: none;
+}
+
+.desktopLabel {
+  display: inline;
+}
+
+@media (max-width: 720px) {
+  .desktopLabel {
+    display: none;
+  }
+
+  .mobileLabel {
+    display: inline;
+  }
+}

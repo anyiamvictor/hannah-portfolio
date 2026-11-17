@@ -1,0 +1,86 @@
+
+@use '../../styles/variables' as *;
+
+.navigation {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  .navigation {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 8px 8px calc(8px + env(safe-area-inset-bottom));
+
+    background: rgba($color-white, 0.96);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border-top: 1px solid $color-border;
+  }
+
+  .navLinks {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+  }
+
+  .navItem {
+    position: relative;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+
+    padding: 8px 2px;
+
+    color: $color-muted;
+    text-decoration: none;
+    transition: color $transition-fast;
+  }
+
+  .active {
+    color: $color-navy;
+  }
+
+  .indicator {
+    position: absolute;
+    top: -8px;
+    width: 28px;
+    height: 3px;
+    border-radius: 4px;
+    background: $color-gold;
+  }
+
+  .label {
+    font-size: 10px;
+    font-weight: 500;
+  }
+
+  .navCredit {
+    margin-top: 3px;
+    color: $color-muted;
+    font-size: 7px;
+    line-height: 1.4;
+    text-align: center;
+
+    a {
+      color: $color-navy;
+      font-weight: 600;
+      text-decoration: none;
+
+      &:hover {
+        opacity: 0.65;
+      }
+    }
+  }
+}
