@@ -17,7 +17,7 @@ const experiences = [
     id: 'resswell',
     company: 'Resswell Catering Services',
     shortName: 'Resswell',
-    logo: '/images/experience/logo.png',
+    logo: `${import.meta.env.BASE_URL}images/experience/logo.png`,
     role: 'Operations & Business Manager',
     period: 'Present',
     description:
@@ -37,7 +37,7 @@ const experiences = [
     id: 'helpstation',
     company: 'HelpStation',
     shortName: 'HelpStation',
-    logo: '/images/experience/help-station.jpg',
+    logo: `${import.meta.env.BASE_URL}images/experience/help-station.jpg`,
     role: 'Client & Partner Manager',
     period: '2023',
     description:
@@ -55,7 +55,7 @@ const experiences = [
     id: 'che-spice-house',
     company: 'Che Spice House',
     shortName: 'Che Spice',
-    logo: '/images/experience/chespicehouse.jpeg',
+    logo: `${import.meta.env.BASE_URL}images/experience/chespicehouse.jpeg`,
     role: 'Social Media & Content Support',
     description:
       'I supported the brand’s social media presence through visual content creation, photography, and image editing.',
@@ -72,7 +72,7 @@ const experiences = [
     id: 'ovuacomp',
     company: 'Ovuacomp',
     shortName: 'Ovuacomp',
-    logo: '/images/experience/ovuacomp.jpeg',
+    logo: `${import.meta.env.BASE_URL}images/experience/ovuacomp.jpeg`,
     role: 'Virtual Assistant',
     description:
       'I provided virtual assistance to Ovuacomp by supporting customer communications, handling service requests, and helping ensure customers received timely and helpful responses.',
@@ -275,6 +275,8 @@ function Experience() {
 }
 
 export default Experience;
+
+
 
 
 

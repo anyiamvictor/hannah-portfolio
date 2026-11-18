@@ -1,4 +1,4 @@
-
+﻿
 import { Link } from 'react-router';
 import { motion } from 'motion/react';
 import { ArrowUpRight, MoveRight } from 'lucide-react';
@@ -24,7 +24,7 @@ function PortfolioHero({
         >
           <div className={styles.portraitFrame}>
             <img
-              src="/images/profile/hannah.jpeg"
+              src={`${import.meta.env.BASE_URL}images/profile/hannah.jpeg`}
               alt="Hannah Johnson"
               className={styles.portrait}
             />
@@ -145,4 +145,5 @@ function PortfolioHero({
 }
 
 export default PortfolioHero;
+
 
