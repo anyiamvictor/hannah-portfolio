@@ -210,6 +210,13 @@
   min-width: 0;
 }
 
+/* Employer navigation wrapper */
+.employerNavigation {
+  position: relative;
+  width: 100%;
+  margin-bottom: 24px;
+}
+
 /* Employer switcher */
 .employerTabs {
   display: flex;
@@ -217,7 +224,7 @@
   gap: 28px;
   border-bottom: none;
   padding-bottom: 0;
-  margin-bottom: 24px;
+  margin-bottom: 0;
 }
 
 .employerTab {
@@ -331,6 +338,11 @@
   min-width: 0;
 }
 
+/* Navigation hint: hidden on desktop */
+.employerNavigationHint {
+  display: none;
+}
+
 /* Tablet */
 @media (max-width: 768px) {
   .employerTabs {
@@ -382,7 +394,7 @@
   }
 }
 
-/* Main tabs on small screens */
+/* Main tabs and employer navigation on small screens */
 @media (max-width: 520px) {
   .tabs {
     width: 100%;
@@ -395,11 +407,22 @@
     font-size: 12px;
   }
 
-  .employerTabs {
-    gap: 16px;
+  .employerNavigation {
     margin-bottom: 20px;
+  }
+
+  .employerTabs {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 20px;
+    margin-bottom: 12px;
+    padding: 0 38px 5px 0;
     overflow-x: auto;
+    overflow-y: hidden;
     scrollbar-width: none;
+    scroll-behavior: smooth;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
 
     &::-webkit-scrollbar {
       display: none;
@@ -409,6 +432,7 @@
   .employerTab {
     padding: 10px 0;
     font-size: 11px;
+    scroll-snap-align: center;
   }
 
   .employerLogo {
@@ -424,12 +448,29 @@
   .companyHeading {
     gap: 10px;
   }
+
+  /* Swipe instruction */
+  .employerNavigationHint {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5px;
+    color: $color-muted;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+
+    svg {
+      color: $color-gold;
+      flex-shrink: 0;
+    }
+  }
 }
 
 /* Very small screens */
 @media (max-width: 360px) {
   .employerTabs {
-    gap: 12px;
+    gap: 16px;
   }
 
   .employerTab {
@@ -459,8 +500,10 @@
   .tab,
   .employerTab,
   .employerTab::after,
-  .externalLinks a {
+  .externalLinks a,
+  .employerTabs {
     transition: none;
+    scroll-behavior: auto;
   }
 
   .experienceCard:hover {

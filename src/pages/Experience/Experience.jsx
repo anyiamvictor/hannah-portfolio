@@ -1,11 +1,12 @@
 ﻿
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import {
   ArrowUpRight,
   BriefcaseBusiness,
   ExternalLink,
   Building2,
+  ChevronRight,
 } from 'lucide-react';
 
 import SectionLayout from '../../layouts/SectionLayout/SectionLayout';
@@ -84,16 +85,27 @@ const experiences = [
       'Helping maintain organized and responsive customer communication',
     ],
   },
-
 ];
 
 function Experience() {
   const [activeTab, setActiveTab] = useState('history');
   const [activeEmployer, setActiveEmployer] = useState('resswell');
 
+  const activeEmployerRef = useRef(null);
+
   const selectedExperience = experiences.find(
     (experience) => experience.id === activeEmployer
   );
+
+  useEffect(() => {
+    if (activeTab === 'history') {
+      activeEmployerRef.current?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'center',
+      });
+    }
+  }, [activeEmployer, activeTab]);
 
   return (
     <SectionLayout
@@ -145,39 +157,51 @@ function Experience() {
               transition={{ duration: 0.25 }}
             >
               {/* Employer selector */}
-              <div
-                className={styles.employerTabs}
-                role="tablist"
-                aria-label="Work history"
-              >
-                {experiences.map((experience) => (
-                  <button
-                    key={experience.id}
-                    type="button"
-                    role="tab"
-                    aria-selected={activeEmployer === experience.id}
-                    className={`${styles.employerTab} ${
-                      activeEmployer === experience.id
-                        ? styles.activeEmployerTab
-                        : ''
-                    }`}
-                    onClick={() => setActiveEmployer(experience.id)}
-                  >
-                    <span className={styles.employerLogo}>
-                      {experience.logo ? (
-                        <img
-                          src={experience.logo}
-                          alt=""
-                          loading="lazy"
-                        />
-                      ) : (
-                        <Building2 size={18} />
-                      )}
-                    </span>
+              <div className={styles.employerNavigation}>
+                <div
+                  className={styles.employerTabs}
+                  role="tablist"
+                  aria-label="Work history"
+                >
+                  {experiences.map((experience) => (
+                    <button
+                      key={experience.id}
+                      ref={
+                        activeEmployer === experience.id
+                          ? activeEmployerRef
+                          : null
+                      }
+                      type="button"
+                      role="tab"
+                      aria-selected={activeEmployer === experience.id}
+                      className={`${styles.employerTab} ${
+                        activeEmployer === experience.id
+                          ? styles.activeEmployerTab
+                          : ''
+                      }`}
+                      onClick={() => setActiveEmployer(experience.id)}
+                    >
+                      <span className={styles.employerLogo}>
+                        {experience.logo ? (
+                          <img
+                            src={experience.logo}
+                            alt=""
+                            loading="lazy"
+                          />
+                        ) : (
+                          <Building2 size={18} />
+                        )}
+                      </span>
 
-                    <span>{experience.shortName}</span>
-                  </button>
-                ))}
+                      <span>{experience.shortName}</span>
+                    </button>
+                  ))}
+                </div>
+
+                <div className={styles.employerNavigationHint}>
+                  <span>Swipe to explore companies</span>
+                  <ChevronRight size={15} />
+                </div>
               </div>
 
               {/* Selected employer */}
@@ -196,7 +220,6 @@ function Experience() {
 
                   <div className={styles.cardHeader}>
                     <div>
-                 
                       <div className={styles.companyHeading}>
                         <div className={styles.companyLogo}>
                           {selectedExperience.logo ? (
@@ -275,10 +298,3 @@ function Experience() {
 }
 
 export default Experience;
-
-
-
-
-
-
-

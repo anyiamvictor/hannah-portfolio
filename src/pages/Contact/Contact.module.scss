@@ -362,25 +362,38 @@
   }
 
   .contactCard {
-    padding: 11px 9px;
-    gap: 8px;
+    padding: 11px 8px;
+    gap: 7px;
+    min-width: 0;
   }
 
   .contactIcon {
-    width: 30px;
-    height: 30px;
+    width: 28px;
+    height: 28px;
+  }
+
+  .contactDetails {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
   }
 
   .contactLabel {
     font-size: 11px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .contactDescription {
-    display:none
+    display: none;
   }
 
   .contactArrow {
     width: 12px;
+    height: 12px;
+    flex-shrink: 0;
+    margin-left: auto;
   }
 
   .infoHeading,

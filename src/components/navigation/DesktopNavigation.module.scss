@@ -47,6 +47,7 @@
   font-weight: 500;
   color: $color-muted;
   transition: color $transition-fast;
+  text-decoration: none;
 
   &:hover,
   &.active {
