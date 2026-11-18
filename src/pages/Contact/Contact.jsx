@@ -277,7 +277,7 @@ function Contact() {
                   id="contact-name"
                   name="name"
                   type="text"
-                  placeholder="John Doe"
+                  placeholder="Humpty Dumpty"
                   value={formData.name}
                   onChange={handleChange}
                   required

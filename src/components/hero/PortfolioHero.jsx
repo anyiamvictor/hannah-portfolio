@@ -24,7 +24,7 @@ function PortfolioHero({
         >
           <div className={styles.portraitFrame}>
             <img
-              src="/images/profile/hannahdp.jpeg"
+              src="/images/profile/hannah.jpeg"
               alt="Hannah Johnson"
               className={styles.portrait}
             />
