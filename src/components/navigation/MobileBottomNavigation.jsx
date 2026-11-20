@@ -58,10 +58,10 @@ function MobileBottomNavigation() {
       <div className={styles.navCredit}>
         An{' '}
         <a
-          href="https://wa.me/2347013723537"
+          href="https://anyiamvictor.netlify.app"
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Contact OVUA on WhatsApp"
+          aria-label="Visit the OVUA portfolio"
         >
           OVUA
         </a>{' '}

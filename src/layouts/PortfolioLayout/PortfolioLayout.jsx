@@ -17,10 +17,10 @@ function PortfolioFooter() {
       <span className={styles.credit}>
         An{' '}
         <a
-          href="https://wa.me/2347013723537"
+          href="https://anyiamvictor.netlify.app"
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="OVUA on WhatsApp"
+          aria-label="Visit the OVUA portfolio"
         >
           OVUA
         </a>{' '}
